@@ -6,7 +6,6 @@ library("org.Hs.eg.db")
 library(clusterProfiler)
 library(enrichplot)
 
-setwd("~/Desktop/Desktop/Xena/Enrichment analysis")
 
 deg <- read_csv("output/c2c1_degs.csv") |>
   dplyr::rename(ENSEMBL = Ensembl_ID)
@@ -53,33 +52,7 @@ write.table(mkegg, file="output/enrich/kegg/mkegg.tsv", sep="\t", col.names=NA, 
 barplot(mkegg, showCategory = 10)
 dotplot(mkegg, showCategory = 10)
 
-David <- enrichDAVID(gene = sig_genes,
-                   universe = as.character(deg$ENTREZID)) 
 
-
-
-
-BiocManager::install("RDAVIDWebService")
-library(RDAVIDWebService)
-
-
-write.table(DAVID, file="output/enrich/DAVID/DAVID.tsv", sep="\t", col.names=NA, quote=F)
-
-barplot(kegg, showCategory = 10)
-dotplot(kegg, showCategory = 10)
-
-
-# ggplot
-library(ggplot2)
-
-
-#common DEGs with Geo 
-genes <- c("ENSG00000080839", "ENSG00000110852")
-
-cl <- readr::read_csv(file = "output/clusters.csv")
-
-df <- readr::read_csv(file = "output/L.csv") |>
-  dplyr::filter(Ensembl_ID %in% genes) |> 
   t() |>
   as.data.frame(stringsAsFactors=FALSE) 
 
@@ -100,4 +73,3 @@ ggplot(df, aes(x = Group, y = ENSG00000080839, color = Group)) +
   theme_minimal()
 
 
-enrich
