@@ -1,5 +1,4 @@
 
-setwd("~/Desktop/Desktop/Xena/Oncoplot_6")
 #Running Oncoplot for all clusters#
 BiocManager::install("maftools")
 library(maftools)
