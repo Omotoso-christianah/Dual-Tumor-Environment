@@ -1,7 +1,7 @@
-setwd("~/Desktop/Desktop/Xena/DEG_Michelle")
+
 library(limma)
 y <- read.csv2("L_Ordered.tsv", header = TRUE, row.names = 1, sep = ",", dec = ",")
-y[1:3,1:3]
+
 # Experimental groups
 # Samples are in order of clusters
 groups <-  c(rep("C1",16), rep("C2",23))
